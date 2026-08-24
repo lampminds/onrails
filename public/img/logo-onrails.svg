@@ -14,8 +14,12 @@ viewBox="0 0 10500 3200"
     .fil0 {fill:#D10024}
    ]]>
   </style>
+  <!-- Clip left edge so the yellow stroke on the plate's left vertical is not visible -->
+  <clipPath id="logoClipLeft">
+   <rect x="40" y="0" width="10460" height="3200"/>
+  </clipPath>
  </defs>
- <g id="Capa_x0020_1">
+ <g id="Capa_x0020_1" clip-path="url(#logoClipLeft)">
   <metadata id="CorelCorpID_0Corel-Layer"/>
   <g id="_2120348917104">
    <!-- Blue plate behind wordmark + track cutouts (matches header wave) -->

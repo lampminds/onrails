@@ -1,94 +1,36 @@
 <!-- FOOTER -->
 <footer id="footer">
-    <!-- top footer -->
-    <div class="section">
-        <!-- container -->
-        <div class="container">
-            <!-- row -->
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                    <div class="footer">
-{{--
-                        <h3 class="footer-title">Acerca de</h3>
-                        <p>(Falta descripción...)</p>
---}}
-                        <ul class="footer-links">
-                            <li><a href="https://maps.app.goo.gl/bRiM7xGBLpvTq4TA9" target="_blank"><i class="fa fa-map-marker"></i>Río Cuarto, Córdoba</a></li>
-                            <li><a href="https://wa.me/5493584022516" target="_blank"><i class="fa fa-phone"></i>+54 9 3584 02-2516</a></li>
-                            <li><a href="mailto:info@onrails.com.ar" target="_blank"><i class="fa fa-envelope-o"></i>info@onrails.com.ar</a></li>
-                        </ul>
-                    </div>
-                </div>
+    {{-- Tune --footer-extra-gray / --footer-logo-height in public/css/style.css --}}
+    <div id="footer-banner">
+        {{--
+          Red strip = full logo height (not the header 53% split).
+          On the footer the logo is on the RIGHT, so the rail curve sits above the flat
+          yellow divider — the left red band must rise to match that curve top.
+          Do not use SVG viewBox hacks to tune this; height is CSS-only.
+        --}}
+        <div class="footer-red-strip" aria-hidden="true"></div>
 
-{{--
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Categories</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">Hot deals</a></li>
-                            <li><a href="#">Laptops</a></li>
-                            <li><a href="#">Smartphones</a></li>
-                            <li><a href="#">Cameras</a></li>
-                            <li><a href="#">Accessories</a></li>
-                        </ul>
-                    </div>
-                </div>
---}}
-
-                <div class="clearfix visible-xs"></div>
-
-{{--
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Information</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Orders and Returns</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                        </ul>
-                    </div>
-                </div>
---}}
-
-{{--
-                <div class="col-md-3 col-xs-6">
-                    <div class="footer">
-                        <h3 class="footer-title">Service</h3>
-                        <ul class="footer-links">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                </div>
---}}
-            </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
+        <a href="{{ route('home') }}" class="footer-logo-link">
+            <img src="{{ asset('img/logo-onrails.svg') }}?v=5" alt="On Rails">
+        </a>
     </div>
-    <!-- /top footer -->
 
     <!-- bottom footer -->
     <div id="bottom-footer" class="section">
         <div class="container">
-            <!-- row -->
+            <ul class="footer-contact-links">
+                <li><a href="https://maps.app.goo.gl/bRiM7xGBLpvTq4TA9" target="_blank"><i class="fa fa-map-marker"></i>Río Cuarto, Córdoba</a></li>
+                <li><a href="https://wa.me/5493584022516" target="_blank"><i class="fa fa-phone"></i>+54 9 3584 02-2516</a></li>
+                <li><a href="mailto:info@onrails.com.ar" target="_blank"><i class="fa fa-envelope-o"></i>info@onrails.com.ar</a></li>
+            </ul>
             <div class="row">
                 <div class="col-md-12 text-center">
                     <span class="copyright">
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | Desarrollado y administrado por <a href="https://lampminds.com" target="_blank"><img src="img/lampminds_logo.jpg" alt="Lampminds.com"></a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							</span>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | Desarrollado y administrado por <a href="https://lampminds.com" target="_blank"><img src="img/lampminds_logo.jpg" alt="Lampminds.com"></a>
+                    </span>
                 </div>
             </div>
-            <!-- /row -->
         </div>
-        <!-- /container -->
     </div>
     <!-- /bottom footer -->
 </footer>

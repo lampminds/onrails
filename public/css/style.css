@@ -508,7 +508,7 @@ textarea.input {
   max-width: none;
 }
 
-/* Search overlay — sits in the blue (top) half */
+/* Search overlay — sits in the gray/blue (top) half on large viewports */
 .header-banner-content {
   position: relative;
   z-index: 1;
@@ -531,6 +531,10 @@ textarea.input {
 
 .header-banner-content .header-search form {
   margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
 }
 
 /*----------------------------*\
@@ -546,19 +550,25 @@ textarea.input {
 }
 
 .header-search form .input-select {
+  flex: 0 1 150px;
+  width: 150px;
+  min-width: 0;
   margin-right: -4px;
   border-radius: 40px 0px 0px 40px;
 }
 
 .header-search form .input {
-  width: calc(100% - 260px);
+  flex: 1 1 auto;
+  width: auto;
+  min-width: 0;
   margin-right: -4px;
 }
 
 .header-search form .search-btn {
+  flex: 0 0 auto;
   height: 40px;
   width: 100px;
-  background: #D10024;
+  background: #D10024; /* red on gray band (desktop) */
   color: #FFF;
   font-weight: 700;
   border: none;
@@ -2082,12 +2092,93 @@ textarea.input {
 ===========================================================*/
 
 #footer {
-  background: #15161D;
   color: #B9BABC;
 }
 
+/*
+ * Footer banner:
+ *  - Gray band on top (--footer-extra-gray)
+ *  - Red strip = full logo height (matches rail-curve top when logo is on the right)
+ *  - Logo flush right, same height as red strip
+ * Tune heights with the CSS variables below — not with SVG viewBox.
+ */
+#footer-banner {
+  --footer-logo-height: 120px; /* same visual size as header logo */
+  --footer-extra-gray: 24px;   /* gray above the red / logo */
+  --footer-banner-height: calc(var(--footer-logo-height) + var(--footer-extra-gray));
+  position: relative;
+  padding: 0;
+  background-color: #4A5C78;
+  border-top: 3px solid #F0C43A;
+  border-bottom: 3px solid #F0C43A;
+  overflow: hidden;
+  height: var(--footer-banner-height);
+  box-sizing: border-box;
+}
+
+/* Full-width red band: same height as the logo, anchored to the bottom */
+.footer-red-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-logo-height);
+  background-color: #D10024;
+  border-top: 1px solid #F0C43A;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+.footer-logo-link {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: block;
+  height: var(--footer-logo-height);
+  line-height: 0;
+}
+
+.footer-logo-link img {
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+
 #bottom-footer {
-  background: #1E1F29;
+  background: #15161D;
+  padding: 20px 0 25px;
+}
+
+.footer-contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.footer-contact-links li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.footer-contact-links li:last-child {
+  margin-right: 0;
+}
+
+.footer-contact-links li a {
+  color: #B9BABC;
+  font-size: 12px;
+}
+
+.footer-contact-links li a:hover {
+  color: #D10024;
+}
+
+.footer-contact-links li i {
+  color: #D10024;
+  margin-right: 5px;
 }
 
 .footer {
@@ -2121,7 +2212,7 @@ textarea.input {
 }
 
 .copyright {
-  margin-top: 30px;
+  margin-top: 0;
   display: block;
   font-size: 12px;
 }
@@ -2225,34 +2316,75 @@ textarea.input {
   #top-header .header-links {
     width: 100%;
   }
-  .header-banner-content {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    padding-top: 8px;
-    padding-left: 15px;
-    padding-bottom: 8px;
-  }
-  .header-logo-link {
-    position: relative;
-    height: 56px;
-    align-self: flex-start;
-  }
-  .header-logo-link img {
-    height: 56px;
-    max-width: 90vw;
-  }
-  .header-banner-content .header-search {
-    max-width: none;
-    margin-top: 8px;
-  }
+  /*
+   * Mid/small viewports: logo fills the banner (same idea as footer),
+   * search stays on one row in the red band.
+   */
   #header {
-    height: auto;
-    min-height: var(--header-banner-height);
+    --header-banner-height: 120px;
+    height: var(--header-banner-height);
   }
   .header-wave {
+    top: 0;
     bottom: 0;
-    height: auto;
+    height: 100%;
+  }
+  .header-logo-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+  .header-logo-link img {
+    height: 100%;
+    max-width: none;
+  }
+  .header-banner-content {
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 100%;
+    padding-top: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: calc((var(--header-banner-height) * (1 - var(--header-wave-split)) - 40px) / 2);
+  }
+  .header-banner-content .header-search {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    /* Leave room for logo; keep enough width for the category select */
+    margin-left: clamp(160px, 36vw, 240px);
+  }
+  .header-search form .input-select {
+    flex: 1 1 42%;
+    width: auto;
+    min-width: 130px;
+    max-width: 55%;
+    padding-left: 10px;
+    padding-right: 24px;
+  }
+  .header-search form .input {
+    flex: 1 1 30%;
+    min-width: 70px;
+  }
+  .header-search form .search-btn {
+    width: 84px;
+    background: #4A5C78; /* gray button on red band */
+  }
+  #footer-banner {
+    --footer-logo-height: 56px;
+    --footer-extra-gray: 12px;
+    height: var(--footer-banner-height);
+  }
+  .footer-red-strip {
+    height: var(--footer-logo-height);
+  }
+  .footer-logo-link {
+    height: var(--footer-logo-height);
+  }
+  .footer-logo-link img {
+    max-width: 90vw;
   }
   #product-imgs {
     margin-bottom: 60px;
@@ -2274,6 +2406,29 @@ textarea.input {
   }
   .section-tab-nav li {
     margin-top: 10px;
+  }
+  /* Phone: logo smaller, search full-width in red so the select is readable */
+  #header {
+    --header-banner-height: 140px;
+  }
+  .header-logo-link {
+    height: 64px;
+  }
+  .header-logo-link img {
+    height: 64px;
+  }
+  .header-banner-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .header-banner-content .header-search {
+    margin-left: 0;
+    width: 100%;
+  }
+  .header-search form .input-select {
+    flex: 1 1 48%;
+    min-width: 0;
+    max-width: none;
   }
 }
 

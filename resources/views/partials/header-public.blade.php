@@ -26,13 +26,13 @@
         </svg>
 
         <a href="{{ route('home') }}" class="header-logo-link">
-            <img src="{{ asset('img/logo-onrails.svg') }}" alt="On Rails">
+            <img src="{{ asset('img/logo-onrails.svg') }}?v=5" alt="On Rails">
         </a>
 
         <div class="container header-banner-content">
             <div class="header-search">
                 <form>
-                    <select class="input-select" id="header-category-select" style="width:150px;" name="category">
+                    <select class="input-select" id="header-category-select" name="category">
                         <option value="">Categorías</option>
                         @foreach(($publicCategoryOptions ?? []) as $id => $label)
                             <option value="{{ $id }}" {{ request('category') == $id ? 'selected' : '' }}>{{ $label }}</option>

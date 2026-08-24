@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
 
 <!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}?v=header-wave-6"/>
+<link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}?v=header-search-fix-3"/>
 
 <!-- jQuery -->
 <script src="{{ asset('js/jquery.min.js') }}"></script>
