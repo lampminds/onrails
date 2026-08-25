@@ -44,7 +44,7 @@ class MenuResource extends LmpResource
 
                     TextInput::make('link')
                         ->label('Enlace')
-                        ->helperText('Puede ser un enlace relativo (/store?category=10) o absoluto (https://google.com)')
+                        ->helperText('Rutas válidas: / (Home), /store (Tienda), /page/{slug} (páginas CMS). Relativo con query: /store?category=10. Absolute: https://…')
                         ->required()
                         ->maxLength(255)
                         ->rules([

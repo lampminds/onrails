@@ -205,7 +205,7 @@
 <!-- /SECTION -->
 
 <!-- Filter Form -->
-<form id="filter-form" method="GET" action="{{ route('home') }}">
+<form id="filter-form" method="GET" action="{{ route('store') }}">
     <input type="hidden" name="category" id="selected-category" value="{{ request('category') }}">
     <input type="hidden" name="min_price" id="min-price" value="{{ request('min_price') }}">
     <input type="hidden" name="max_price" id="max-price" value="{{ request('max_price') }}">

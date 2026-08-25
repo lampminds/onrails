@@ -17,6 +17,14 @@ Route::get('/store/product/{product:slug}', [StoreController::class, 'show'])->n
 
 Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
+// Legacy / mistaken public URLs → current routes (menus, bookmarks, old links)
+Route::redirect('/productos', '/store', 301);
+Route::redirect('/products', '/store', 301);
+Route::redirect('/contact', '/page/contacto', 301);
+Route::redirect('/contacto', '/page/contacto', 301);
+Route::redirect('/about', '/page/sobre-nosotros', 301);
+Route::redirect('/sobre-nosotros', '/page/sobre-nosotros', 301);
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

@@ -12,9 +12,9 @@
             <div class="col-md-12">
                 <ul class="breadcrumb-tree">
                     <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('home') }}">Tienda</a></li>
+                    <li><a href="{{ route('store') }}">Tienda</a></li>
                     @foreach($product->categories as $category)
-                        <li><a href="{{ route('home', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
+                        <li><a href="{{ route('store', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                     @endforeach
                     <li class="active">{{ $product->name }}</li>
                 </ul>
@@ -131,7 +131,7 @@
                     <ul class="product-links">
                         <li>Categoría:</li>
                         @foreach($product->categories as $category)
-                            <li><a href="{{ route('home', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
+                            <li><a href="{{ route('store', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                         @endforeach
                     </ul>
 

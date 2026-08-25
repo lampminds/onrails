@@ -27,13 +27,13 @@ class MenuSeeder extends Seeder
             ],
             [
                 'title' => 'Contacto',
-                'link' => '/contact',
+                'link' => '/page/contacto',
                 'active' => true,
                 'order' => 3,
             ],
             [
                 'title' => 'Sobre Nosotros',
-                'link' => '/about',
+                'link' => '/page/sobre-nosotros',
                 'active' => true,
                 'order' => 4,
             ],
