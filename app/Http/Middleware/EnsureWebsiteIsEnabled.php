@@ -23,15 +23,11 @@ class EnsureWebsiteIsEnabled
      * Block public routes when website_enabled is off.
      *
      * Filament boolean parameters store Y/N; also accept true/1 for safety.
-     * Authenticated users can still browse the public site.
+     * Only Filament (and Livewire) remain reachable while the site is disabled.
      */
     public function handle(Request $request, Closure $next): Response
     {
         if ($request->is($this->except)) {
-            return $next($request);
-        }
-
-        if ($request->user()) {
             return $next($request);
         }
 
